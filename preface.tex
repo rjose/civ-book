@@ -1,0 +1,110 @@
+\newenvironment{indentedpar}[1]%
+  {\begin{list}{}%
+         {\setlength{\leftmargin}{#1}}%
+          \item[]%
+         }
+  {\end{list}}
+
+\chapter{Preface}
+Software development involves many activities, but the essential one is writing
+code, figuring out what text to type into a computer. This book is about what
+makes code "good" and what makes a "good" coder.
+
+We often toss around terms like "good code" and "bad code" with only a fuzzy
+understanding of what we mean. Good code could mean concise...or verbose;
+well-commented...or self-commenting; easily readable...or easily writable. It's
+often a subjective judgment based on some aspect of the code that we feel is
+important or that's important in the given context.
+
+While these notions of goodness may be important to a team and even necessary
+for it to function well, sometimes the world changes and what used to be
+considered good may become obsolete. In the past when computers were much more
+limited, writing code that could fit in 640K of memory was "good" code; code
+that didn't fit had to be rewritten. Today, it would be ridiculous to use this
+measure of goodness for anything but the most extreme applications. Another
+example is minimizing the use of function calls. In the past, function calls
+were expensive and so using things like macros to expand code inline while
+keeping it readable were important in order to have performant code. Today, we
+routinely define even the smallest functions without any concern for the cost.
+Now, the reverse is considered good: having functions that are too long is now
+considered bad.
+
+In the chapters below, we'll explore a more fundamental way of thinking about
+what makes good code. Here's a brief overview:
+
+\textbf{Chapter 1: Rules}
+
+When we first learn to code, we need to learn the rules. Rules capture the
+learnings of those who coded before us. They provide an initial perspective on
+how to write good code because they were drafted to avoid common problems and
+mistakes.
+
+\textbf{Chapter 2: Perspectives}
+
+Rules were created to solve specific problems in particular domains. A set of
+rules represents a certain perspective on how to write good code. However,
+different domains have different rules and consequently different perspectives.
+Learning to see code from new perspectives is a key part of writing better
+code.
+
+\textbf{Chapter 3: Duality}
+
+Once we can see things from multiple perspectives, we can start to understand
+code in terms of duality.  Duality means different things in different domains.
+In mathematics (particularly in category theory), duality refers to "reversing"
+the relationships of a definition to yield something related but new. In
+philosophy, duality refers to two contrasting yet inseparable aspects of
+something. We'll use both of these ideas to take a closer look at code.
+
+\textbf{Chapter 4: Extremes}
+
+Because duality is often portrayed in terms of "good" and "bad", it's tempting
+to view all dualities this way and constantly drive towards the "good" end of
+the spectrum as much as possible. We create and enforce rules on what code
+must look like and how it is to be written. However, both sides of a duality
+are "bad" in some sense. Both are extreme points of view and have similar types
+of problems.
+
+\textbf{Chapter 5: Balance}
+
+Balance is a stable state of tension between opposing forces. These forces can
+be thought of as being aligned along multiple, simultaneous dualities affecting
+a system, such as a code base, in rich and complex ways. Balanced code is
+under tension, in some sense, and has a number of desirable properties.
+
+\textbf{Chapter 6: Choice}
+
+Balanced code sits between extremes---but where should that point be? As
+coders, we choice the balance point, in effect, acting as the final
+counter-balance in the system. Being responsible for this choice can be
+paralyzing, but finding a good balance point is like finding a place of power
+where large problems can be solved with small adjustments. Balanced code
+magnifies the impact of choice.
+
+\textbf{Chapter 7: Unbound}
+
+After choosing a good balance point for code, it's tempting to view that choice
+as final and even more tempting to use that choice to make future design
+choices. However, doing this implicitly constrains choice. As technology,
+users, and even the problem change what makes a good balance point changes as
+well. Ideally, options should be unbound, but this requires coders who can
+balance code. 
+
+\textbf{Chapter 8: Mastery}
+
+Coding for a long time does not a master make; but to master coding, you must
+have coded for decades. Likewise, understanding many perspectives and rules is
+necessary but insufficient. Master coders don't need to know rules because they
+have internalized them to the point of intuition.
+
+
+\textbf{Chapter 9: Void}
+
+The void is...nothing...but a lot of it. It's unrealized, unconstrained
+possibility. For the beginner, this is a frightening, featureless place full of
+false starts and pitfalls.  Coding in the void means coding without support. But
+for master coders, it means coding without constraints, where you can bring the
+full force of your knowledge and background to bear on any problem. In this
+place, the only constraints are from you.
+
+

@@ -1,0 +1,6 @@
+*.dvi
+*.aux
+*.swp
+*.log
+*.toc
+sample2e.tex
