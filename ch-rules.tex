@@ -1,2 +1,239 @@
 \chapter{Rules}
-TODO: Fill this out
+Coding can be fun and rewarding, but learning to code can be discouraging in
+part because there are so many decisions to make. Should we start with the user
+interface and then move down or should we start with the underlying components
+and move up? What are the inputs to our application? How does the input get in?
+What form should it have? What are the outputs? How does it get to the user?
+What should we do when things go wrong? What errors do we need to handle? Will
+we have to store data? Where should we put it? How should we organize it? How
+should we model our data? How shouldwe name it? How do the elements of our
+application interact with each other? Are there well-defined states? How do we
+transition between them? Should we use built-in data structures or create
+custom ones? Should we write tests first? How should we comment code? Should we
+write big functions or lots of little ones? Should we do object-oriented
+programming or functional programming (or both)? Should we indent with spaces
+or tabs? The list of decisions stretches on forever.
+
+But even after we've made our decisions, how do we know we've made good ones?
+Are we heading down a difficult or dead-end path? Will we have to reach the end
+before we have to head back and start over? How many dead ends will we have to
+take before we've coded something that works well?
+
+Fortunately, the coders who came before us have figured out what are generally
+good ideas over decades of trial and error. They've figured out what choices
+tend to yield good results and which ones lead to problems. These ideas and
+choices have become rules for how to code.
+
+Coding rules establish guidelines that help us get started. They allow us to
+focus on the problems we want to solve instead of puzzling over a myriad of
+choices. They define concepts and metaphors for thinking about coding problems
+and the patterns for solving them. They define a framework for thinking about
+problems and solutions. When we can map our problems into a framework, we get
+solutions from the framework for free.
+
+\begin{framed}
+\noindent TODO: I wonder if we can bring the category theory ideas in here to formalize
+this notion of mapping problems into frameworks and viewing different
+perspectives almost like different categories?
+\end{framed}
+
+Rules can keep us out of trouble by bounding safe areas to work in. When we
+stay within these boundaries, we avoid certain kinds of problems. When we stick
+to proven patterns, our coding experience can be more fruitful and
+enjoyable---we solve problems at hand speedily and with confidence.
+
+\section{Evolution of Rules}
+
+Rules start from ideas that worked well, practices that prevented a class of
+mistakes or that made coding more productive. They are established within dev
+teams and if generally effective, spread to the industry at large and if
+universally effective to the software field itself.
+
+\subsection{Team Rules}
+
+Rules start in teams as generally good ideas for systematically addressing
+problems. Some rules address common but avoidable errors. For instance, in C++,
+a vector data structure stores objects in a contiguous space of memory and
+provides a way to access them using an index. But in C++, it's common to
+refer to objects by a pointer to their memory location, making it very natural
+to use pointers to objects in vectors. This can lead to a problem that's
+disastrous and very hard to identify and reproduce: when the vector runs out of
+memory, it will allocate another block of memory and copy all of its elements
+and discard its previous memory store, turning all previous pointers into
+garbage. A team that runs into this will probably create a rule like ``Never
+refer to vector elements by pointers---always use indexes''.
+
+Some rules are conventions that don't necessarily improve the code but make it
+easier for people to work together. Conventions for how to name things, for
+instance, can make it easier for everyone to understand code without extra
+documentation. A team may decide that all functions private to a module are
+lower case and those used outside of a module are capitalized, or that all
+class variables start with an underscore, or that all constants are
+capitalized. These conventions create consistency within code, making it easier
+for everyone to read, and also to write, because this set of decisions has
+already been made.
+
+Process conventions form another class of rules that focus on how code is
+developed. For instance, when code is checked into a version control system,
+there is a main branch, the trunk, which contains official versions of the
+code, and there are variations of the trunk rooted at different spots called
+branches. One process convention is for coders to work on their own branches
+and then merge their work back in when it's time to release a new version.
+While this approach has the benefit of allowing people to work quickly in
+parallel, it can result in a ``big merge'' problem when several people have
+changed the same parts of code unintentionally change behavior that others rely
+on. A big merge can take a lot of time and effort to resolve, and worse, it may
+introduce subtle bugs or inadvertently undo bug fixes. A team that ships a bad
+merge will probably come up with process rules like ``All changes go onto the
+trunk'' or ``Only one person can work on a module at one time''.
+
+Over time, teams create many rules and conventions. Teams with track records
+for quality code and efficient execution become the models for other teams in a
+company. Their rules spread and become adopted throughout the org.
+
+\subsection{Industry Rules}
+
+Some rules are specific to particular domains or industries (e.g.,
+semiconductor equipment, medical devices, web development, AI). These industry
+rules are adopted because they address problems that everyone in that industry
+eventually runs into. In numerical code, people have come up with rules that
+result in higher performance code that preserves precision as much as possible,
+rules like ``Consolidate additions and subtractions before multiplications'' and
+``Sum a long sequence of numbers by ordering them with alternating signs of
+similar magnitude''.
+
+Some rules are conventions that everyone in that industry follows. In web
+development, every response from a server has a status code whose values
+indicate something that every web dev understands: codes between 200 and 299
+mean that the request was ok, the specific numbers give additional information;
+codes between 400 and 499 mean that the client made a mistake in constructing
+the request; codes between 500 and 599 mean that the server made a mistake,
+typically not handling an exception properly. Anyone who does web work is
+intimately familiar with these rules and can write code that uses them to
+integrate smoothly with any web server or client application.
+
+\subsection{Field Rules}
+
+Some rules transcend all industries and are generally accepted across the
+software field. A well-known example is Dijkstra's classic 1968 note to the
+ACM: ``Go To Statement Considered Harmful'' where he argued that goto makes
+programs hard to follow and understand and overusing goto can ``make a mess of
+one's program''. The goto statement is a necessary part of assembly language
+coding, but in higher level languages it can lead to code that is difficult to
+reason about: the number of ways of reaching a section of code is unbounded and
+unpredictable. This rule has been so embraced by coders that even the phrase
+``\textless something\textgreater\ considered harmful'' flags something as an
+anathema within the software field.
+
+Another field rule is ``Don't use global variables'' (variables accessible
+throughout the code and that can be changed by anyone at any time during code
+execution). Like ``goto'', overusing global variables can lead to code that is
+difficult to reason about because it isn't clear how and when the values of
+global variables were changed. But, more seriously, is when two pieces of code
+are in conflict over what the value of a global variable should be. If one
+piece of code sets a global to one value and another changes it before the
+first is done using it, the program will surely be in a bad state where all
+subsequent results are suspect. Tracking down problems like these can be a
+nightmare.
+
+Some field rules take the form of advice that saves time. For instance, Knuth's
+``...premature optimization is the root of all evil...'' is a well-known
+example. The problem with optimizing too soon is that it involves adding
+complexity to the code, which may or may not help depending on where the
+performance issues actually are. Coders are notoriously bad at guessing at what
+will be expensive because we think in terms of what would be time consuming for
+us to do rather than the computer. It turns out that the computer is super fast
+at a lot of things. When we add complexity to a program, we make it harder to
+understand and harder to change later on. Worse, it may force the code to take
+on a certain design or even architecture depending on the nature of the
+optimization.  A follow on rule to Knuth's adage is ``profile before
+optimizing''. By profile, we mean to analyze the runtime behavior of the
+software to see where it spends the most time and where it makes the most
+function calls. These are the areas focus on. Often, the place to optimize is
+an inocuous part of the code that no one would ever suspect of being a problem.
+
+Some field rules are process conventions that are widely accepted almost as
+standards. For instance, the ``Agile'' methodology has steadily grown from its
+conception in 2001 by a number of software's thought leaders to the de facto
+standard process for most software teams. Today, no one will bat an eye if
+someone asks when the daily stand-up meeting is or be puzzled if someone asks
+how many story points they think something will take or how long a sprint
+should be. Most coders today are very comfortable working in an Agile
+environment because they already know its rules.
+
+\section{Rules Establish Culture}
+
+Rules establish the concepts, vocabulary, and metaphors that form the culture of
+teams, industries, and the software field. Concepts like data structures and
+algorithms are some of the first things coders learn. Terms like ``array'' and
+``queue'' have very specific meanings and well-defined operations. The ``tree''
+metaphor is ubiquitious and all of its associated terms are familiar to any
+coder: root, branches, leaves.
+
+Vocabulary is at the heart of culture. It is so ingrained in the minds of
+coders that even close synonyms of standard terms seem like foreign concepts.
+The term ``heap'' refers to a data structure whose operations maintain a
+particular ordering of its elements. But the very similar words ``pile'' and
+``mound'' don't really mean anything to a coder and seeing them in code would
+certainly require explanation, if not justification.
+
+Becoming a coder means learning the rules of software, and learning the rules
+is a social activity. We learn the rules of the field from teachers and
+professors, from classmates and mentors. We learn them by reading what people
+post online. We learn them when we go to meetups and conferences, when we watch
+presentations and talk to attendees and speakers. We learn them in our
+internships and from our coworkers when we work professionally.
+
+Even when we write code alone, we learn from the designers of the languages we
+use. Their choice of names and syntax reflect the rules they felt were
+important. Many popular languages don't have a ``goto'' statement or global
+variables, and so when you code in these languages, you internalize those
+particular rules implicitly. Through programming languages, designers reinforce
+industry concepts and vocabulary, providing ways to frame coding problems and
+solve them.
+
+But it is on teams where rules serve their most important social function. On
+teams, rules help coders work together without misunderstanding. If code must
+always be peer reviewed before it can be checked in, no one is surprised if
+they can't check code in at 2 am. If code reviews are rigorous, no one is upset
+when they receive critical feedback. If the team has rules on how variables are
+named or functions are commented, then code that violates these rules will look
+incorrect even if nothing is technically wrong. Rules define the customs and
+establish the culture of a team.
+
+The job interview is essentially an assessment of a candidate's compatibility
+with and understanding of the rules of the field, industry, and team. When a
+recruiter calls, they are checking that you know the vocabulary of the field
+and industry. The phone screen makes sure you understand concepts. The lunch
+interview helps figure out how compatible you are with the team's rules. And
+while coding and design interviews are intended to gauge your problem-solving
+skills, they are also assessing how well you understand the rules of the field
+and industry. It's entirely possible for you to solve a problem, but
+fail the interview because you didn't use established terms or didn't use them
+correctly (for instance, if you said that you'd put the elements in a
+``pile''). Conversely, if you have a solid grasp of the rules, you might answer
+a question in a few words without any whiteboarding at all. By using the right
+terms in the right context, you can immediately establish a shared
+understanding with the interviewing (e.g., ``You could use
+two heaps with one as a priority queue'').
+
+\section{Rules Define a Perspective}
+
+The rules of a team, industry, or field are really perspectives on how work
+should be done. Rules implicitly define a value system on what makes good code.
+Some rules like ``Don't optimize too soon'' are nearly universal, but others
+depend on the problems that a team or industry faces and may actually conflict
+with each other. Code that runs on an interstellar probe must be extremely
+robust. Code for pacemakers must handle all possible failure modes safely. Code
+for a web startup needs to be developed and deployed (and fixed) quickly. Code
+used to prototype a product concept needs to be more flexible than robust.
+
+If you've worked in several industries, you've probably picked up several
+perspectives (and languages) and may find it easy to adopt new ones because
+you understand that rules are different because of different problems. But if
+you've only worked within one domain and have only ever used on language, then
+you've really only coded from one perspective and are certain to have implicit
+biases. If you stay in one industry for your entire career, this might not
+matter---you can certainly have a rich, promotion-filled career doing this. But
+your progression as a coder will be stunted. After all, how can you master
+coding when you only know one way to do it?
