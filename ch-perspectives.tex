@@ -1,0 +1,587 @@
+\chapter{Perspectives}
+
+No matter how many years you've coded, if you've only worked in one industry
+and in one language, then you really only have one perspective on how to write
+code. When you always approach problems from the same perspective, all
+solutions look the same. If you only know Java, solving problems is an object
+modeling exercise. If you only know C, then solving problems means building
+system utilities. If you only know Haskell, then solving problems means
+composing functions. When you only have one perspective, you only have one set
+of concepts, one set of metaphors, and one set of solutions. It's better to
+have more.
+
+When you can view a problem from a variety of perspectives, you can often find
+angles of attack where the problem becomes simpler to solve. When you can
+deconstruct a problem using using concepts and metaphors that fit, it comes
+apart at natural seams. For enterprise problems, object-oriented perspectives
+are effective because it fits the way that business analysts view the world.
+For high volume web apps, an asynchronous perspective works well because it
+mirrors how client apps (and end users) behave. For messaging applications, a
+distributed perspective is effective because high availability and error
+recovery are key features of these systems.
+
+The best way to acquire new perspectives is to work professionally in several
+different industries. For some coders, this happens naturally over a
+career---but it is a relatively slow process, taking a decade or two to build
+up an interesting set. Another way is to spend some time learning different
+programming languages.  Language designers created programming languages to
+solve problems they were facing in some area. They developed rules and
+perspectives on how to approach certain types of problems and encoded these
+perspectives into the concepts and syntax of the languages themselves. When you
+learn and use a new language, you implicitly adopt the perspective of the
+language designer, at least for a short while. Taking the time to study and
+learn new programming languages is an effective way of gaining perspective.
+
+\section{How to Learn a Language}
+
+The technical details of learning a language (visiting the website, doing a
+"Hello, World", going through a tutorial, etc.) are straightforward so won't be
+discussed here. What most coders should do in addition to all of this is some
+background research. Find out who created the language. What was their
+background? What problem were they trying to solve?  What was the domain and
+context of the problem? The background of the designer will give you clues
+about the language's perspective. Designers who are mathematical tend to be
+more formal and value correctness. System administrators tend to be more
+practical and flexible. Hardware engineers leave the details of the machine
+exposed and manipulable.
+
+The next thing to look up is when the language was created. This gives you a
+sense of the constraints the designer was facing as well as the atmosphere at
+the time. Languages from the 70s and 80s will be concerned with the efficient
+use of memory and squeezing performance out of the hardware, while languages of
+the 21st century will abstract many of the details away and provide an
+environment that automates as much of the bookkeeping as possible. A language's
+domain shapes its concepts and provides examples of problems the language is
+best-suited for. Erlang, for example, was created in the telecom domain, and
+because of this, it excels at creating highly available, highly redundant,
+failure tolerant distributed systems. Using it to build instant messaging
+applications (like WhatsApp) is a perfect fit.
+
+When you learn a new language, you must silence your internal critic and work
+at keeping an open mind. This is especially true when learning older languages
+and for languages that are quite different from what you already know. Older
+languages have implicit constraints that you may not appreciate. For instance,
+even as late as the 90s, getting a program to fit into 640KB of memory was a
+goal. There were ways of using memory beyond that, but it involved more work
+because that extended memory couldn't be used in the same way as the base
+640KB. But these concepts and techniques may still be relevant. Current
+applications like running services at internet scale and building AI
+applications easily exhaust vast amounts of memory---perhaps a dash of an older
+perspective may prove useful again.
+
+But even when learning contemporary languages, you must hold your internal
+critic back. Learning Javascript from a Java background might give you fits
+because everything seems too dynamic, too unstructured, and willfully
+inconsistent. But look past that. The state of Javascript reflects the state of
+the Web and for that, it is perfectly suited. Understanding Javascript helps
+you understand web development. Similarly, learning Haskell from a Javascript
+background could be maddening. The immutability of data and the lack of loops
+will leave you wondering how you can get anything done at all. But Haskell's
+perspective of being ``correct by desing'' will make you a better coder and
+improve your Javascript because you will think more about inputs to your
+functions and how you can guarantee valid behavior.
+
+\section{What Languages to Learn}
+
+If you only know one programming language, then it seems like there might be 5
+or 10 out there to learn. Actually, there are hundreds of programming languages
+out there with more being created all the time. No one has time to learn them
+all, or even a representative set. So which ones should you learn? If your goal
+is to gain perspective, then you should pick something that intrigues you and
+that is quite different from what you already know.
+
+In this section, I'll describe a selection of languages that I've found
+itneresting over my career. They reflect the domains I worked in, what was
+popular at the time, and what I decided to learn on the side.  Here's how I
+like to think of them:
+
+\begin{adjustwidth}{0.25in}{0in}
+\begin{description}
+    \item[Popular]: Java, Python, Javascript
+    \item[Historical]: Assembly, Fortran
+    \item[Classic]: C, C++, Lisp
+    \item[Functional]: Haskell, Erlang
+    \item[Stack-based]: Postscript, Forth
+\end{description}
+\end{adjustwidth}
+
+
+\subsection{Popular Languages}
+
+What's popular today might not be popular tomorrow, but Java, Python, and
+Javscript always seem to show up on lists of popular languages or languages
+that people want to learn. It's certainly worth understanding their
+perspectives.
+
+\subsubsection{Java}
+
+Java's tagline when it was released was ``write once, run anywhere'', a
+reaction to the constant expense of porting software between platforms and OS
+versions. But when Gosling designed Java in the 90s, it was also a reaction to
+the problems that professional programmers faced with object-oriented
+programming (OOP). This was the new paradigm in software development with C++
+being the dominant language of the time. Coders struggled with the ambiguities
+of multiple inheritance, the web of class hierarchies, and the constant
+segmentation faults. Gosling sought to eliminate these problems by designing
+rules into the Java language itself. Multiple inheritance was
+explicitly forbidden---there is no way to express it in Java. He added
+powerful reflection capabilities to the runtime, giving rise to the first true
+IDEs that helped coders automatically and dynamically traverse class
+hierarchies. To eliminate the dreaded SEGFAULT, the runtime would also handle
+memory management through automatic garbage collection.
+
+Gosling made Java much simpler than C++ so that it would be easy for newcomers
+to learn but kept the syntax similar enough to C++ that experienced programmers
+could ramp up quickly. This had two important effects. The first was that
+colleges adopted Java as a teaching language for their Computer Science
+students, leading to a generation of coders with Java perspectives out of the
+gate. The second is that it enabled offshore software contractors to train
+their staff quickly and offer Java services at scale. The large Java talent
+pool, along with the Java runtime's more secure execution environment, helped
+drive Java into the enterprise where it still thrives today.
+
+As Java coders became more sophisticated, so did Java. Features like generics,
+aspect-oriented concepts, and functional programming have appeared in Java over
+the years. But at its core, Java's perspective is still making OOP easy and
+safe (relative to C++).
+
+\subsubsection{Python}
+
+Python started in 1989 as a side project by Guido van Rossum during his
+employer's Christmas shutdown of that year. It incorporated features from an
+earlier language that van Rossum worked on (called ABC) but modified
+to be more appealing to Unix/C coders.
+
+ABC was hard to extend, but Python would be easy to extend, especially in C.
+Python would have a module system that followed the conventions of the Unix
+file system. To add a module, write some code and drop it into a directory. To
+use a C library, wrap it in Python's foreign function interface calls and drop
+the shared library into a directory.  Because of the ease of Python's
+extensibility, the standard Python distro shipped with a wide range of
+functionality making it easy to get started out of the box. This ``batteries
+included'' perspective invited comparison with other languages like C++ which,
+at that time, did not even have a standard string class.
+
+Another key aspect of Python's perspective is that readability is imporant.
+Readability came, in large part, by making indentation significant. This
+removed the visual clutter of punctuation for statement blocks. It also
+eliminated a class of semantic errors where code that was obviously meant to be
+in a block because of how it was formatted was technically not because of a
+syntactic oversight. This also promoted a uniformity in how Python looked, even
+when written by different people on different teams. This uniformity encouraged
+a perspective that there should be an obvious way of doing anything, a
+``Pythonic'' way. While not strictly enforced by the language, Pythonic code
+was concise and easy to write and so was naturally adopted and promoted by many
+Python coders.
+
+The ease of getting started with Python combined with its readability and
+extensibility helped displace Java as a teaching language in many schools. The
+availability of high quality modules for web development, machine learning,
+graphical programming, and statistics helped push Python into the industry from
+a different angle, the R\&D rather than infrastructure. The development of
+tools like Jupyter notebooks allowed sharing of technical papers with live
+Python content, further promoting the spread of Python among researchers and
+scientists.  Python's perspective that extensibility, readability, and
+``batteries included'' are important has made Python one of the perennially
+popular languages.
+
+\subsubsection{Javascript}
+
+Javascript wasn't so much designed a shoved into existence by Netscape during
+the ``browser wars'' of the 90s. Javascript's designer, Brendan Eich, had
+originally wanted to use a Lisp-like language to implement browser scripting but
+was directed to come up with something that complemented Java as part of
+Netscape's strategy to fend off Microsoft. Javascript transformed web pages
+from static documents to dynamic views with visual flair and interactivity,
+further extending Netscape's dominance of the time.
+
+Microsoft was forced to add compatible Javascript support to Internet Explorer,
+but also took interactivity forward by creating XML HTTP Requests (XHR) which
+enabled pages to make web requests dynamically, a necessary part of Outlook Web
+Access---and every other web app to come. Each Microsoft innovation pushed
+Javascript further beyond Netscape's control. Netscape sought to rein thisd in
+through standardization, but Microsoft strongly opposed this citing that it
+would ``break the web''. Eventually, in 2008, all parties, perhaps recognizing
+that the browser wars could not be won on the Javascript front, agreed to a
+standard that was a compatible subset of existing implementations.
+
+Javascript grew with the Internet, driven by demand for increasingly
+sophisticated applications. The XHR technology that Microsoft created was
+leveraged to an amazing degree by Google in Gmail and Google Maps, eventually
+being rebranded as the more prounouncable "Ajax" (asynchronous Javascript and
+XML). Ajax unlocked the power of Javascript as a platform for building true web
+applications, first as a way to get content dynamically and then to dynamically
+render the page itself.
+
+As web developers became more comfortable with asynchronous concepts, they
+realized this could also be applied on the server side, especially for proxy
+servers that made many concurrent requests, similar to how a web browser itself
+works. Ryan Dahl pursued this idea and extracted the V8 Javascript engine from
+the Chrome browser and integrating it into a server which he named node.js. The
+availability of Javascript on the server-side led to an explosion of
+Javascript-based tools, cementing it as a general purpose language.
+
+Javascript's perspective is a reflection of the Internet. It was battered by
+market forces into something dynamic, robust, and messy with oddly-matched
+paradigms. It has object-oriented features, but Lisp is in its soul. Its
+asynchronous aspects helped implement interactivity within a single thread of
+execution, but this also led to its efficient use of server-side resources. Its
+syntax, through JSON (Javascript object notation), has become the de facto
+standard format of the web. To truly understand web development, you must
+understand Javascript and its perspective.
+
+\subsection{Historical Languages}
+
+The first programming languages were abstractions created to make coding
+easier. Learning these languages gives you an appreciation of the early
+challenges of organizing and managing code and data as well as an understanding
+of how much modern languages do for today's coder.
+
+\subsubsection{Assembly Language}
+
+There isn't a single assembly language or even a single convention for assembly
+languages. They were created as mnemonics for machine instructions which are
+tied directly to specific hardware. Machine instructions are literal
+representations of input voltages to a chip. E.g., the instruction 0110 might
+mean "low voltage on pins 0 and 3 and high voltage on pins 1 and 2". While you
+could code by specifying a sequence of such instructions, working with strings
+of 0s and 1s (or even hexadecimal representations) is tedious and error prone.
+Therefore, coders came up with words like MOV, CMP, and JMP to represent bit
+patterns. These words formed the assembly language instructions to these chips.
+
+Because each chip had its own machine instructions and each vendor had their
+own conventions, assembly language programs were extremely non-portable. This
+is why Knuth defined his own assembly language (MIX) as a teaching aid in his
+classic \underline{The Art of Computer Programming}. In a similar vein, the GNU
+Assembler (gas) is an abstraction of assembly language providing a portable
+foundation on which higher-level languages can be built. And the Java virtual
+machine (JVM) byte-code is essentially assembly language for the JVM on which
+Java and languages like Kotlin, Scala, and Clojure can run. In some sense, all
+of these abstractions are really abstractions of the underlying hardware.
+
+While assembly language is as low as you can go as a coder, there are still
+black boxes you cannot see into but which do most of the interesting work.
+These are built into the chips themselves by the manufacturer. Thus, a large
+part of assembly coding is arranging memory and updating registers in
+preparation to make calls into black boxes on the chip. However, this is the
+assembly language perspective: understanding the rules of the hardware. No
+matter how high-level a language you use or how abstract the concepts you work
+with, at some point it all becomes assembly language and obeys the rules of the
+hardware.
+
+Understanding assembly language gives you a mental model of the hardware and
+insight into what the computer is doing when it runs your software. Because
+writing assembly code requires so much discipline and attention to detail,
+getting even simple programs to execute correctly will stretch your
+organizational skills and help you become a more careful coder.
+
+
+\subsubsection{Fortran}
+
+Fortran is the oldest true programming language, not just a collection of
+mnemonics for machine instructions, but one with variables, loops, floating
+point, and arrays---elements for creating cross-platform programs that any
+coder, even today, could understand. John Backus proposed Fortran in 1953 for
+the purpose of improving coder efficiency. This was the first time that anyone
+recognized that ``coder time'' was more expensive than ``machine time'',
+especially taking into account all the time troubleshooting and debugging code.
+Backus' proposal became the Formula Translation project (FOR-TRAN) and was the
+first time anyone had encoded rules like ``this is how you loop over an array''
+into the language syntax.
+
+Fortran was the first abstraction beyond assembly language and marked the
+beginning of numerical algorithms by opening up coding to mathematicians,
+scientists, and engineers. It enabled people to solve differential equations
+numerically rather than finding closed-form solutions (which might not exist)
+or crafting physical analog representations which were time consuming to run
+and prone to breaking down. However, it also introduced new types of challenges
+like dealing with numerical stability and precision, especially when performing
+long sequences of computations with very large or very small numbers. This
+forced coders to become more sophisticated and develop numerical libraries
+which could alleviate some of these issues. Fortran was the natural choice when
+the Department of Energy and the NSF decided to fund the implementation of key
+numerical algorithms. These eventually became libraries like EISPACK and
+LINPACK which are essentially still in use today's machine learning and AI
+applications.
+
+Fortran's initial perspective was making coding easier and more reliable than
+assembly, something all languages today take for granted. Over time, its
+perspective shifted to numerical coding. In this, Fortran is still unmatched
+both in the ease of expressing numerical algorithms and in its flexibility for
+managing numerical precision to suit each application. It is still the language
+of choice for many traditional engineering and research applications.
+
+\subsection{Classic Languages}
+
+The classic languages have established dominant archetypes for the software
+field and continue to inspire the concepts and syntax of languages today. They
+have remained popular and are still widely used.
+
+\subsubsection{C}
+
+C was literally invented for Unix. Unix began as an unofficial, unfunded
+side-project in 1970 by several researchers at Bell Labs who wanted to build a
+simpler version of a large operating system they were part of (the Multics OS).
+The initial version of Unix, like all operating systems to that point, was
+implemented in assembly. Ken Thompson wanted to write Unix utilities in
+Fortran, but in order to do this, he needed to write a Fortran compiler for
+Unix in assembly. This proved to be too big of an effort, so he started with a
+simpler language called BCPL and pared it down, calling what remained "B".
+Unfortunately, B programs ran slowly and weren't able to access computer memory
+efficiently. To address this, Dennis Ritchie shored up the parts of B that were
+lacking and came up with a new language he named "C". As the team wrote Unix
+utilities in C, they found it so effective that they decided to rewrite the
+entire Unix OS in C as well.
+
+C, like Fortran, is an abstraction above assembly but instead of targeting
+numerical algorithms, it focused on the computer system itself. C's ability to
+access hardware efficiently, combined with its ease in implementing utility
+programs, kept C at a lower level of abstraction than Fortran, but still high
+enough to normalize hardware-specific details. This enabled C to be easily
+implemented on other hardware and act almost like a portable, high-level
+assembly language. This made Unix (and all of its utilities) easy to port,
+driving the popularity of both C and Unix first in the 80s and then again in
+the 90s with the introduction of Linux.
+
+Because of its ready availability, C was adopted by a generation of architects
+and influenced the languages they designed. Many languages were implemented in
+C and naturally used C as their extension language. In fact, with Fortran-to-C
+utilities generating C-compatible binaries, all of the existing numerical
+Fortran libraries could be used directly in C programs, and by extension,
+languages written in C.
+
+At its core, C's perspective is the efficient, portable access to hardware. Its
+original purpose of building small, focused utilities became intertwined with
+the Unix philosophy of building applications that do one thing well. And the
+best C programs do.
+
+\subsubsection{C++}
+
+C++ was motivated by a problem that Bjarne Stroustrup was thinking about at
+Bell Labs in the 70s. He was trying to work out how Unix could be run in a
+distributed way across a network of computers. Because this was a complex
+hierarchical problem, he felt that Simula would be a good fit---its
+object-oriented concepts mapped cleanly onto this problem. However, Stroustrup
+knew from past experience during his PhD work that available Simula
+implementations were not up to the task. He wanted something with excellent
+performance and build up from there. C was a natural choice because it was
+popular, portable, and performant (and generally available on all Unix
+platforms by default) so he built a C preprocessor that contained Simula-like
+elements. This was called ``C with classes'' and was the initial prototype for
+C++.
+
+In 1982, Stroustrup felt that ``C with classes'' had plateaued and would not see
+significant growth or impact without a significant change, and so he decided to
+create a successor that was a true language built with compiler technology
+rather than being a preprocessor step. He wanted it to be object-oriented,
+performant, flexible, and familiar to coders who used C. This was an ambitious
+goal, made even more ambitious by Stroustrup's attitude that because there were
+always multiple ways of solving problems, the programming language should not
+exclude any of them. This philosophy has continued throughout C++'s evolution,
+leading to criticisms that C++ was an indiscriminate union of language
+proposals. However, proponents counter that each addition solved real problems
+and made C++ a more pragmatic language.
+
+C++ grew rapidly in the 80s and 90s, becoming the dominant OOP language over
+that period. The promise of addressing code re-use through inheritance,
+combined with the easy transition from C, made it an easy sell to managers. The
+novelty of OOP made it appealling to coders. This caused an explosion of C++
+books and training, making C++ attractive to consultants, as well.
+
+Although C++ is a general purpose language, one of its sweet spots was
+graphical programming. UI elements sit in a natural hierarchy, so C++'s style
+of composition and inheritance was a good fit. Similarly, GPU programming was
+another sweet spot where C++'s focus on being a high-performance system
+language with OO concepts to manage complexity was also a natural fit. As GPU
+programming has become general purpose for massively concurrent applications,
+it's interesting how closely this mirrors Stroustrup's original goal of running
+an OS across a network of machines. The fact that it is well suited to this
+problem was essentially designed into C++ from the start.
+
+The perspective of C++ is performance, flexibility, and OOP for modeling
+complex systems. Flexibility in particular, is a distinguishing aspect. C++
+does not dictate how to do things---this is up to the coder (in some sense,
+this is opposite to Python's perspective that there should be an obvious
+Pythonic way of doing something). C++ is a big language with many concepts. It
+requires discipline and rigor, especially for large teams. It was designed for
+professionals with expertise to model and solve big problems. 
+
+
+\subsubsection{Lisp}
+
+Unlike Fortran or C, Lisp was not designed as an abstraction of assembly
+language nor was it even intended to run on a computer---it started in 1956 as
+a mathematical notation that John McCarthy used to represent computer programs
+for exploring the newly christened field of artificial intelligence.
+
+Lisp was designed to manipulate symbols so that AI researchers could model and
+code abstract ideas. It used lists of symbols as its primary data structure,
+hence its name LISt Processor. Since lists could contain other lists as
+elements, they could be used to represent trees, records, and even functions
+themselves. And when functions become data, they can be manipulated dynamically
+by the language, opening up a world of possibilities like partial function
+evaluation, dynamic execution, automatic generation of functions from data, and
+running code in an interpreted way.
+
+Fortran was not powerful enough to implement Lisp because it had no support for
+recursion, a key requirement and so an initial attempt to build a Lisp
+interpreter was abandoned. However, a grad student (Steve Russell) at Dartmouth
+read McCarthy's paper on Lisp and figured out how to build a Lisp evaluator in
+assembly code. Once this was in place, all of Lisp came to life. One of the
+ironies of Lisp is that even though it was designed for abstract concepts, its
+two most important functions, car (first element of list) and cdr (rest of
+list) are so named because they referred to the hardware on which the first
+Lisp evaluator was built. The ``car'' function referred to the ``contents of
+the address part of the register'' while ``cdr'' referred to the ``contents of
+the decrement part of the register''.
+
+Lisp's perspective is abstract and conceptual. It focused on the manipulation
+of symbols with AI at its core. Not only did Lisp impact essentially all
+languages that came after it, but it also changed the arc of computer science
+and coding: from numbers to concepts, from computation to Math. Lisp's ideas
+from over 50 years ago somehow always seem fresh and novel when they reappear
+in languages today.
+
+\subsection{Functional Languages}
+
+In the 1930s, Alonzo Church explored the theoretical basis for computation by
+thinking about mathematical functions from a computational perspective. Through
+this work, he developed the ``lambda calculus'' which formed the theoretical
+foundation for programming. It is more expressive than many languages because
+it manipulates pure functions (i.e., functions without side effects) as
+mathematical objects and can formally represent concepts like functional
+composition, partial application, and recursion. The concepts of the lambda
+calculus are at the core of functional programming languages.
+
+\subsubsection{Haskell}
+
+Unlike most programming languages, Haskell was designed not by a person but by
+a committee. In the mid 80s, the most widely used functional language was a
+proprietary one called Miranda. At the 1987 Functional Programming Languages
+and Computer Architecture conference in Portland, OR, attendees agreed that
+there needed to be an open standard and language for functional programming
+research. A group was formed to hammer out the details. The language they
+designed was named Haskell after the American mathematician who developed the
+Y-combinator, a way of implementing recursion in the lambda calculus.
+
+Because it was designed to explore ideas in functional programming rather than
+solve real-world problems, coding in it can feel like setting up a mathematical
+proof. You spend a lot of time defining types and functions and figuring out
+how fit the pieces together so that everything commutes\footnote{See Appendix
+A: A Little Category Theory}. It's vaguely reminiscent of assembly language
+programming in that you spend a lot of time getting things arranged so you can
+feed them into black boxes that perform the magic. But once everything fits,
+there's a very good chance that it will just work. That's one of the delightful
+parts of Haskell: it validates a formal approach to coding. Understanding a
+formal perspective will make you a more efficient coder and a better
+troubleshooter because it will strengthen how you reason.
+
+Haskell's perspective is theoretical and Mathematical. Many of its concepts
+come directly from branches of Math like Set Theory and Category Theory, making
+it easy to bring abstract ideas directly to the language. Along with this
+tradition comes a perspective of program correctness and correctness by
+design.
+
+
+\subsubsection{Erlang}
+
+In the 80s, Joe Armstrong and a couple of fellow Ericsson engineers started
+evaluating the best languages for programming telecom applications. They
+decided that a high level language good at symbol manipulation like Lisp or
+Prolog would meet their need. However, after they added more specific
+telephony requirements like concurrency, error recovery without backtracking,
+they realized that there wasn't a single language that could do this, so they
+decided to create one.
+
+The design of Erlang mirrors its context. Just as in telephony where there are
+hundreds of thousands of people making phone calls to each other, in Erlang
+there are hundreds of thousands of ``processes`` (or actors) sending messages
+to each other. These actors handle messages in recursive event loops where the
+previous state is passed along with the message and the next state is returned
+as a result. This explicit separation of previous and next states led
+implicitly to Erlang actors implementing pure functions. A direct consequence
+of this is that failover is simple: just send the message and the previous
+state to another actor and everything will proceed seamlessly.
+
+Erlang's perspective came not from a theoretical foundation like Haskell, but
+from solving real problems in a specific domain. Constraints like high
+availability, fault tolerance, massively distributed, and concurrent led to a
+design where functional programming emerged naturally and was an excellent fit.
+Erlang has a lightweight, pragmatic feeling because it was designed carefully
+to solve specific problems.
+
+\subsection{Stack-based Languages}
+
+Stack-based languages can streamline copying data to/from memory by using a
+stack to pass arguments and results between functions. They are surprisingly
+simple to implement, being essentially an extension of reverse polish notation
+calculators, a classic interview question. In fact, building a stack-based
+language interpreter is probably the best way to learn \textit{any}
+general-purpose programming language. However, the simplicity of stack-based
+languages belies their power. We'll explore this in more detail towards the end
+of this book.
+
+\subsubsection{Postscript}
+
+John Warnock, a Xerox PARC engineer in the mid 70s, developed a stack-based
+page description language for laser printers. This was a compact approach for
+abstractly representing the layout and content of printed pages. When Xerox
+declined to pursue this commercially, Warnock and another engineer decided to
+build a company around this, which they named Adobe. They refined their page
+description language and named it ``Postscript''.
+
+Postscript really arrived when Steve Jobs, impressed with its capabilities and
+excited about a future of high quality documents that end users could publish
+on their own, invested \$2.5 million in the company and committed Apple to
+building a laser printer for it. The combination of Apple hardware and Adobe's
+Postscript language launched desktop publishing.
+
+Postscript can be used as a general-purpose language, but its focus and
+perspective has always been on the efficient representation of page content.
+Its primitives were tuned for graphical operations like rotations, scalings,
+and translations. It pioneered the use of a graphics context to efficiently
+re-use code and for efficiently implementing vector graphics. Its influence can
+still be seen today in the HTML canvas and graphics programming, in general. In
+fact, a subset of Postscript still powers Adobe's PDF technology today.
+
+\subsubsection{Forth}
+
+The inspiration for Postscript was a language called Forth designed by Chuck
+Moore in the 60s but making its first appearance in 1970 as a language for
+controlling telescopes. The design of Forth wasn't so much motivated by the
+problems Moore was trying to solve as it was a reflection of his design
+sensibilities.\footnote{Ruby is another language whose design is a reflection
+of its creator's (Yukihiro ``Matz'' Matsumoto) sensibilities.} Moore's focus
+on elegance and simplicitly, especially from a minimalistic perspective can be
+seen throughout.  Unlike every other language described in this chapter,
+including Lisp, Forth is nearly free of syntax. A Forth program is just a
+sequence of words executed one after the other. 
+
+Moore made subtle design choices that give Forth expressiveness and power.
+A new Forth word can be created in terms of existing Forth by simply cutting
+and pasting the words verbatim and dropping them into a new definition. The new
+word can be pasted seamlessly over the code they replace. By using a list to
+implement Forth's dictionary (rather than using an actual dictionary data
+structure), the history of word definitions is preserved, allowing words to be
+defined in terms of other words that exist at the point of definition even of
+those words are redefined later on.
+
+Forth, like C++, is not a beginner's language---though for opposite reasons.
+C++ lets you do many kinds of things by providing many kinds of mechanisms;
+Forth lets you do many kinds of things by not restricting what can be done.
+Forth's perspective is simplicity and minimalism without constraints---or
+assistance. The more you know, the more you can do; conversely, Forth may not
+be a lot of fun when first starting out.
+
+\section{Summary}
+
+Languages are excellent examples of perspectives in coding. The rules implicit
+in languages capture what their designers felt was important. Languages are
+opinionated perspectives on how to conceptualize and solve software problems.
+Different perspectives give you different ways of approaching problems. They
+give you different concepts, techniques, and solution patterns.
+
+Different perspectives also reveal different aspects of a problem, making some
+things about a problem easier---or harder---but they don't change the
+underlying problem itself. We'll explore this idea in our next chapter:
+Duality.
